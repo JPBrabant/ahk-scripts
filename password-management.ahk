@@ -1,5 +1,10 @@
 #Requires AutoHotkey v2.0
 
+; TODO
+; - Start the script after double clicking and listening to BACKSPACE
+; - 
+
+
 ; Keep the script running indefinitely because we want to use the tray icon to launch it
 Persistent(true)
 
@@ -28,9 +33,9 @@ Tray.Default := "Type password"             ; Set as default (double click)
 Tray.Add()                                  ; Separator
 Tray.Add("Exit", (*) => ExitApp())          ; Menu item for exit
 
-; Type the password after a couple of seconds
+; Type the password after BACKSPACE is pressed
 AutoTypePassword(*) {
-    TrayTip("Password management", "Pasting the password in 3 seconds")
-    Sleep(3000)
+    TrayTip("Password management", "Waiting for BACKSPACE")
+    KeyWait("Backspace", "D T5") ; Wait up to 5 seconds for the BACKSPACE to be pressed
     Send(savedPassword)
 }
