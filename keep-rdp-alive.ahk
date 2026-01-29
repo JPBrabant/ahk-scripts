@@ -15,8 +15,8 @@ SetTimer(KeepAlive, timer)
 KeepAlive() {
     global endHour, minDelay, maxDelay, timer
 
-    ; Exit if workday is over
-    if A_Hour >= endHour {
+    ; Exit if workday is over and Remote Desktop is not open
+    if A_Hour >= endHour && !WinExist("Remote Desktop") {
         ExitApp
     }
 
