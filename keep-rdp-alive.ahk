@@ -21,12 +21,17 @@ KeepAlive() {
     }
 
     ; If Remote Desktop is open, activate and send a key
-    if WinExist("Remote Desktop") or WinExist("Bureau à distance") {
-        WinActivate
-        Sleep(500)
+    if WinExist("Remote Desktop") {
+        try {
+            WinActivate()
+            Sleep(500)
 
-        fKeyNum := Random(13, 24)
-        Send("{F" fKeyNum "}")
+            fKeyNum := Random(13, 24)
+            Send("{F" fKeyNum "}")
+
+        } catch {
+            ; Do nothing if WinActivate fails
+        }
     }
 
     ; Show tray tip with key and delay
