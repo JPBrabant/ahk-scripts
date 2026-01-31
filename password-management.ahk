@@ -1,9 +1,7 @@
 #Requires AutoHotkey v2.0
 
 ; TODO
-; - Start the script after double clicking and listening to BACKSPACE
-; - 
-
+; - Create a work-menu that launch both scripts
 
 ; Keep the script running indefinitely because we want to use the tray icon to launch it
 Persistent(true)
